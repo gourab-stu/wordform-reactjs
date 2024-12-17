@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   const homeHeading = "Try TextUtils - Word counter, Character counter, Remove extra spaces";
@@ -44,6 +45,7 @@ function App() {
           <Route exact path="/about" element={<About mode={mode} heading={aboutHeading} />} />
         </Routes>
       </div>
+      <SpeedInsights />
     </>
   );
 }
