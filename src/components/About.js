@@ -7,7 +7,7 @@ export default function About({ mode, heading }) {
   };
   return (
     <div className="container" style={{color: (mode === "dark") ? "white" : "#192b3a"}}>
-      <h2 className="my-3">{ heading }</h2>
+      <h2 className="my-4 text-center">{ heading }</h2>
       <div className="accordion" id="accordionExample" style={myStyle}>
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header">

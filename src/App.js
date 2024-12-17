@@ -6,9 +6,12 @@ import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
+  const homeHeading = "Try TextUtils - Word counter, Character counter, Remove extra spaces";
+  const aboutHeading = "About";
+  const location = useLocation();
   const [mode, setMode] = useState("light");
   const [alert, setAlert] = useState(null);
   const showAlert = (message, type) => {
@@ -33,16 +36,14 @@ function App() {
   };
   return (
     <>
-      <Router>
-        <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} />
-        <Alert alert={alert} />
-        <div className="container">
-          <Routes>
-            <Route exact path="/" element={<TextForm heading="Try TextUtils - Word counter, Character counter, Remove extra spaces" mode={mode} showAlert={showAlert} />} />
-            <Route exact path="/about" element={<About mode={mode} heading="About Us" />} />
-          </Routes>
-        </div>
-      </Router>
+      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} activePage={location.pathname === "/" ? "home" : "about"} />
+      <Alert alert={alert} />
+      <div className="container">
+        <Routes>
+          <Route exact path="/" element={<TextForm heading={homeHeading} mode={mode} showAlert={showAlert} />} />
+          <Route exact path="/about" element={<About mode={mode} heading={aboutHeading} />} />
+        </Routes>
+      </div>
     </>
   );
 }

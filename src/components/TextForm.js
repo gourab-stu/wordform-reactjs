@@ -58,7 +58,7 @@ export default function TextForm({ mode, heading, showAlert }) {
       <button disabled={text.length === 0} className="btn btn-primary mx-2 mt-2" onClick={handleOnCopyText}>Copy Text</button>
       <h2 className="mt-4" style={{ color: mode === "dark" ? "white" : "black" }}>Text Summary</h2>
       <p style={{ color: mode === "dark" ? "white" : "black" }}>
-        {text.length} characters | {text.split(" ").filter((element) => { return element.length !== 0; }).length} words | {text.split(". ").length - 1} sentences
+        {text.length} characters | {text.split(/\s+/).filter((element) => { return element.length !== 0; }).length} words | {text.split(". ").length - 1} sentences
       </p>
       <h2 className="mt-4" style={{ color: mode === "dark" ? "white" : "black" }}>Preview</h2>
       <p className="p-2 rounded m-0" style={{ color: mode === "dark" ? "white" : "black", backgroundColor: mode === "dark" ? "#224058" : "white", border: ("1px solid #a19f9d")}}>
