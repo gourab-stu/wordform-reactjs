@@ -9,8 +9,8 @@ import Alert from "./components/Alert";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
-  const homeHeading = "Try TextUtils - Word counter, Character counter, Remove extra spaces";
-  const aboutHeading = "About";
+  const appName = "WordForm";
+  const homeHeading = `Try ${appName} - Word counter, Character counter, Remove extra spaces`;
   const location = useLocation();
   const [mode, setMode] = useState("light");
   const [alert, setAlert] = useState(null);
@@ -36,12 +36,12 @@ function App() {
   };
   return (
     <>
-      <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} activePage={location.pathname === "/" ? "home" : "about"} />
+      <Navbar title={appName} aboutText="About" mode={mode} toggleMode={toggleMode} activePage={location.pathname === "/" ? "home" : "about"} />
       <Alert alert={alert} />
       <div className="container">
         <Routes>
           <Route exact path="/" element={<TextForm heading={homeHeading} mode={mode} showAlert={showAlert} />} />
-          <Route exact path="/about" element={<About mode={mode} heading={aboutHeading} />} />
+          <Route exact path="/about" element={<About mode={mode} title={appName} />} />
         </Routes>
       </div>
     </>
